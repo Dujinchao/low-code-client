@@ -1,0 +1,24 @@
+body{
+  background-color: #eee;
+  margin: 0;
+}
+.home-container {
+  display: flex;
+  height: 100vh;
+  .component-list-container{
+    padding: 10px;
+    width: 300px;
+    background-color: #fff;
+  }
+  .workbanch-container{
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+  }
+  .component-edit-container{
+    padding: 10px;
+    width: 300px;
+    background-color: #fff;
+  }
+}
