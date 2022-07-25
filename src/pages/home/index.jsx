@@ -1,15 +1,17 @@
 import React from "react";
-import ComponentEdit from "../../components/ComponentEdit";
-import ComponentList from "../../components/ComponentList";
-import Workbanch from "../../components/Workbanch";
+import ComponentEdit from "./component/ComponentEdit";
+import ComponentList from "./component/ComponentList";
+import Workbanch from "./component/Workbanch";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 import "./index.scss";
-import { DragSource, DropTarget } from "react-dnd"; //引入react-dnd
-
 const Home = () => {
   return (
     <div className="home-container">
-      <ComponentList />
-      <Workbanch />
+      <DndProvider backend={HTML5Backend}>
+        <ComponentList />
+        <Workbanch />
+      </DndProvider>
       <ComponentEdit />
     </div>
   );

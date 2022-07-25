@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Home from "../pages/home";
 import Counter from "../pages/counter";
 import Login from "../pages/login";
+import Demo from "../pages/demo";
 import BaseLayout from "../layouts/BaseLayout";
 
 //- 懒加载优化
@@ -21,6 +22,10 @@ export const routes = [
       {
         path: "/counter",
         element: lazyLoad(<Counter />),
+      },
+      {
+        path: "/demo",
+        element: lazyLoad(<Demo />),
       },
     ],
   },
