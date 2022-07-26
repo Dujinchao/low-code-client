@@ -1,7 +1,8 @@
 import React from "react";
-import { useDrop } from "react-dnd";
+import MyComponent from "../../../../components/MyComponent";
 import MyButton from "../../../../components/MyButton";
-import { useSelector } from "react-redux";
+import { componento_list_info } from "../../../../utils/typeMapData";
+import MyText from "../../../../components/MyText";
 /**
 参考api 
 accept：必填。 （对应 drag item.type ）
@@ -13,22 +14,18 @@ collect： 可选的。收集功能。它应该返回道具的简单对象以返
 */
 
 const ComponentList = () => {
-  // const { buttonList } = useSelector((state) => state.workbanchNode);
-  // const [{ isOver, canDrop }, drop] = useDrop({
-  //   accept: "button",
-  //   drop: (item, monitor) => ({
-  //     dropname: "组建区",
-  //     top: monitor.getDifferenceFromInitialOffset().y,
-  //     left: monitor.getDifferenceFromInitialOffset().x,
-  //   }),
-  //   collect: (monitor) => ({
-  //     isOver: monitor.isOver(),
-  //     canDrop: monitor.canDrop(),
-  //   }),
-  // });
   return (
-    <div className="component-edit-container">
-      <MyButton value="测试1" index={0} />
+    <div className="component-list-container">
+      <MyButton value={"按钮"} index={10000} />
+      <MyText value="文本" index={10000} />
+      {/* {componento_list_info.map((item, index) => (
+        <MyComponent
+          key={index}
+          className="component-list-item"
+          value={item.value}
+          type={item.type}
+        />
+      ))} */}
     </div>
   );
 };

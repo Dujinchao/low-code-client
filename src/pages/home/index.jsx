@@ -5,6 +5,7 @@ import Workbanch from "./component/Workbanch";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import "./index.scss";
+import "../../components/components.scss";
 const Home = () => {
   return (
     <div className="home-container">

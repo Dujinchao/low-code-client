@@ -1,7 +1,10 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import MyButton from "../../../../components/MyButton";
-import { useSelector } from "react-redux";
+import MyText from "../../../../components/MyText";
+import { useSelector, useDispatch } from "react-redux";
+import { addButton, increateIndex, setButton } from "../../model";
+import { COMPONENT_TYPE } from "../../../../utils/typeMapData";
 /**
 参考api 
 accept：必填。 （对应 drag item.type ）
@@ -14,29 +17,55 @@ collect： 可选的。收集功能。它应该返回道具的简单对象以返
 
 const Workbanch = () => {
   const { buttonList } = useSelector((state) => state.workbanchNode);
-  console.log(buttonList);
-  const [{ isOver, canDrop }, drop] = useDrop({
-    accept: ["button"],
-    drop: (item, monitor) => ({
-      dropname: "编辑区",
-      top: monitor.getDifferenceFromInitialOffset().y,
-      left: monitor.getDifferenceFromInitialOffset().x,
-    }),
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-    }),
+  const { textList } = useSelector((state) => state.workbanchNode);
+  const [, drop] = useDrop({
+    accept: ["button", "text"],
+    drop: (item, monitor) => {
+      console.log(monitor.getItemType());
+      return {
+        top: monitor.getClientOffset().y - 10,
+        left: monitor.getClientOffset().x - 10 - 300,
+      };
+    },
   });
   return (
     <div className="workbanch-container" id="workbanch-container" ref={drop}>
       {buttonList.map((item, index) => (
         <MyButton
           key={index}
-          value={item.value}
+          value={item.value + item.index}
           index={index}
+          id={item.id}
           addStyle={item.style}
         />
       ))}
+      {textList.map((item, index) => (
+        <MyText
+          key={index}
+          value={item.value}
+          index={index}
+          id={item.id}
+          addStyle={item.style}
+        />
+      ))}
+      {/* {elementList.map((item, index) => {
+        switch (item.type) {
+          case COMPONENT_TYPE.TEXT:
+            return <MyText />;
+          case COMPONENT_TYPE.BUTTON:
+            return (
+              <MyButton
+                key={index}
+                value={item.value + item.index}
+                index={index}
+                id={item.id}
+                addStyle={item.style}
+              />
+            );
+          default:
+            break;
+        }
+      })} */}
     </div>
   );
 };

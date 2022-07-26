@@ -7,12 +7,22 @@
     padding: 10px;
     width: 300px;
     background-color: #fff;
+    .component-list-item{
+      display: inline-block;
+      margin: 0 4px;
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      font-size:16px;
+      text-align: center;
+      border: 1px solid red;
+      cursor: pointer;
+    }
   }
   .workbanch-container{
     position: relative;
     flex: 1;
     margin: 10px;
-    padding: 10px;
     background-color: #fff;
   }
   .component-edit-container{
